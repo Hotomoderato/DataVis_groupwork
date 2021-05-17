@@ -27,8 +27,6 @@ $(function () {
     item => parseInt(item.year) === 2000
   )
 
-  console.log(getAllTreeMapDataByName(ProfessionalAccounted, 2000));
-
   let treeData = getTreeMapDataByName(ProfessionalAccounted, 'Barking and Dagenham', 2000);
 
   //使用timelinechanged 属性 先获取时间轴的索引返回值  再通过索引值获取日期
@@ -47,10 +45,6 @@ $(function () {
         data: mapData
       }
     });
-
-    //更新太阳图
-    pieData = getPieData(ProfessionalAccountedAll, nowYear);
-    echarts_4(pieData);
 
     //更新新闻
     newsData_1 = newsData.filter(
@@ -84,10 +78,6 @@ $(function () {
         }
       });
 
-      //更新太阳图
-      pieData = getPieData(ProfessionalAccountedAll, nowTime);
-      echarts_4(pieData);
-
       //更新新闻
       newsData_1 = newsData.filter(
         item => parseInt(item.year) === nowTime
@@ -99,42 +89,36 @@ $(function () {
   echarts_1(treeData);
   echarts_2(xData, yData);
   map(myChart_Map, timeLineData, mapData, maxDataArr);
-  echarts_4(pieData);
   echarts_5(newsData_1[0].title, newsData_1[0].details);
+
+  let arr = [];
+  xData = [2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015];
+  for (const key in ProfessionalAll) {
+    arr.push({
+      type: 'line',
+      name: key,
+      showSymbol: false,
+      data: ProfessionalAll[key]
+    })
+  }
+  echarts_x(xData, yData, arr);
 })
 
 function titleClick (that) {
+  $('a').css('color', 'white');
+  $(that).css('color', 'green');
   let val = that.innerHTML;
   let xData = [];
   let yData = [];
-  if (val === '失业率') {
-    $('#echarts_2').css('display', 'block');
-    $('#echarts_x').css('display', 'none');
+  if (val === 'Unemployment') {
     xData = UnemploymentRate.map(item => parseInt(item['Title']));
     yData = UnemploymentRate.map(item => parseFloat(item['Unemployment rate (aged 16 and over, seasonally adjusted)']));
     echarts_2(xData, yData)
-  } else if (val === '可支配收入') {
-    $('#echarts_2').css('display', 'block');
-    $('#echarts_x').css('display', 'none');
+  } else if (val === 'Disposable Income') {
     xData = DisposableIncome.map(item => item['Date']);
     yData = DisposableIncome.map(item => item['London']);
     echarts_2(xData, yData)
-  } else if (val === '职业占比') {
-    $('#echarts_2').css('display', 'none');
-    $('#echarts_x').css('display', 'block');
-    let arr = [];
-    xData = [2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015];
-    for (const key in ProfessionalAll) {
-      arr.push({
-        type: 'line',
-        name: key,
-        showSymbol: false,
-        data: ProfessionalAll[key]
-      })
-    }
-    echarts_x(xData, yData, arr);
   }
-
 }
 
 function echarts_1 (data) {
@@ -148,7 +132,7 @@ function echarts_1 (data) {
     color: ['rgb(100,200,300)'],
     series: [
       {
-        name: '职业占比',
+        name: 'Careers by Borough',
         type: 'treemap',
         visibleMin: 100,
         data: [data],
@@ -252,7 +236,7 @@ function echarts_2 (xData, yData) {
 }
 
 function echarts_x (xData, yData, series) {
-  let myChart = echarts.init(document.getElementById('echarts_x'));
+  let myChart = echarts.init(document.getElementById('echarts_4'));
 
   option = {
     visualMap: {
@@ -264,7 +248,15 @@ function echarts_x (xData, yData, series) {
     },
     tooltip: {
       trigger: 'axis',
-      position: ['90%', '-90%']
+      position: ['-80%', '20%']
+    },
+    legend: {
+      type: 'scroll',
+      textStyle: { color: '#fff' },
+      pageIconColor: '#fff',
+      pageTextStyle: {
+        color: '#fff'
+      }
     },
     xAxis: [{
       axisLine: {
@@ -295,8 +287,8 @@ function echarts_x (xData, yData, series) {
       },
     },
     grid: {
-      top: '10%',
-      bottom: '20%',
+      top: '20%',
+      bottom: '10%',
       left: '10%'
     },
     series: series
@@ -367,7 +359,7 @@ function map (myChart, timeLineData, mapData, maxDataArr) {
 
       },
       title: {
-        text: "纳税人收入",
+        text: "Taxpayer Income",
         left: 'center',
         top: '2%',
         textStyle: {
@@ -424,98 +416,6 @@ function map (myChart, timeLineData, mapData, maxDataArr) {
     }
   }
 
-  myChart.setOption(option);
-  window.addEventListener("resize", function () {
-    myChart.resize();
-  });
-}
-
-function echarts_4 (data) {
-  // 基于准备好的dom，初始化echarts实例
-  let myChart = echarts.init(document.getElementById('echarts_4'));
-  let legendData = [];
-  data.parentData.forEach(item => legendData.push(item.name));
-  data.childData.forEach(item => legendData.push(item.name));
-
-  // option = {
-  //   color: ['#5470c6', '#91cc75', '#fac858', '#ee6666', '#73c0de', '#3ba272', '#fc8452', '#9a60b4', '#ea7ccc'],
-  //   tooltip: {},
-  //   series: {
-  //     type: 'sunburst',
-  //     data: data,
-  //     radius: [0, '90%'],
-  //     label: {
-  //       // show: false,
-  //       minAngle: 25,
-  //       fontSize: 8,
-  //       rotate: 'radial'
-  //     }
-  //   }
-  // };
-
-  option = {
-    // color: ['#5470c6', '#91cc75', '#fac858', '#ee6666', '#73c0de', '#3ba272', '#fc8452', '#9a60b4', '#ea7ccc'],
-    color: ['#ff7f50', '#87cefa', '#da70d6', '#32cd32', '#6495ed',
-      '#ff69b4', '#ba55d3', '#cd5c5c', '#ffa500', '#40e0d0',
-      '#1e90ff', '#ff6347', '#7b68ee', '#d0648a', '#ffd700',
-      '#6b8e23', '#4ea397', '#3cb371', '#b8860b', '#7bd9a5', '#ff7f50', '#87cefa', '#da70d6', '#32cd32', '#6495ed',
-      '#ff69b4', '#ba55d3', '#cd5c5c', '#ffa500', '#40e0d0',
-      '#1e90ff', '#ff6347', '#7b68ee', '#00fa9a', '#ffd700',
-      '#6b8e23', '#ff00ff', '#3cb371', '#b8860b', '#30e0e0'],
-    tooltip: {
-      trigger: 'item',
-      formatter: '{a} <br/>{b}: {c} ({d}%)'
-    },
-    legend: {
-      type: 'scroll',
-      orient: 'vertical',
-      left: '0%',
-      width: '40',
-      height: '40%',
-      top: '55%',
-      pageButtonPosition: 'start',
-      pageIconColor: '#fff',
-      pageTextStyle: {
-        color: '#fff'
-      },
-      data: legendData,
-      textStyle: { color: '#fff' },
-    },
-    series: [
-      {
-        name: '职业',
-        center: ['50%', '30%'],
-        type: 'pie',
-        selectedMode: 'single',
-        radius: [0, '30%'],
-        label: {
-          show: false,
-          position: 'inner',
-          fontSize: 14,
-        },
-        labelLine: {
-          show: false
-        },
-        data: data.parentData
-      },
-      {
-        name: '职业',
-        type: 'pie',
-        center: ['50%', '30%'],
-        radius: ['45%', '60%'],
-        labelLine: {
-          show: false,
-          length: 30,
-        },
-        label: {
-          show: false,
-        },
-        data: data.childData
-      }
-    ]
-  };
-
-  // 使用刚指定的配置项和数据显示图表。
   myChart.setOption(option);
   window.addEventListener("resize", function () {
     myChart.resize();

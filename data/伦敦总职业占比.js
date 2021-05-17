@@ -16,7 +16,7 @@ var ProfessionalAccountedAll = [
     "2013": "30",
     "2014": "33",
     "2015": "31",
-    "UK Standard Industrial Classification (SIC) 2007": "Sections A+B+D+E: Primary and utilities",
+    "UK Standard Industrial Classification (SIC) 2007": "Primary and utilities",
     "field2": ""
   },
   {
@@ -36,7 +36,7 @@ var ProfessionalAccountedAll = [
     "2013": "123",
     "2014": "132",
     "2015": "122",
-    "UK Standard Industrial Classification (SIC) 2007": "Section C: Manufacturing",
+    "UK Standard Industrial Classification (SIC) 2007": " Manufacturing",
     "field2": ""
   },
   {
@@ -56,7 +56,7 @@ var ProfessionalAccountedAll = [
     "2013": "282",
     "2014": "280",
     "2015": "289",
-    "UK Standard Industrial Classification (SIC) 2007": "Section F: Construction",
+    "UK Standard Industrial Classification (SIC) 2007": "Construction",
     "field2": ""
   },
   {
@@ -76,7 +76,7 @@ var ProfessionalAccountedAll = [
     "2013": "40",
     "2014": "39",
     "2015": "46",
-    "UK Standard Industrial Classification (SIC) 2007": "Section G: Wholesale, retail and motor trade",
+    "UK Standard Industrial Classification (SIC) 2007": "Wholesale, retail and motor trade",
     "field2": "45: Wholesale and retail trade and repair of motor vehicles and motorcycles"
   },
   {
@@ -136,7 +136,7 @@ var ProfessionalAccountedAll = [
     "2013": "269",
     "2014": "275",
     "2015": "282",
-    "UK Standard Industrial Classification (SIC) 2007": "Section H: Transportation and storage",
+    "UK Standard Industrial Classification (SIC) 2007": "Transportation and storage",
     "field2": ""
   },
   {
@@ -156,7 +156,7 @@ var ProfessionalAccountedAll = [
     "2013": "64",
     "2014": "69",
     "2015": "67",
-    "UK Standard Industrial Classification (SIC) 2007": "Section I: Accommodation and food service activities",
+    "UK Standard Industrial Classification (SIC) 2007": "Accommodation and food service activities",
     "field2": "55: Accommodation"
   },
   {
@@ -196,7 +196,7 @@ var ProfessionalAccountedAll = [
     "2013": "60",
     "2014": "66",
     "2015": "70",
-    "UK Standard Industrial Classification (SIC) 2007": "Section J: Information and communication",
+    "UK Standard Industrial Classification (SIC) 2007": "Information and communication",
     "field2": "58: Publishing activities"
   },
   {
@@ -316,7 +316,7 @@ var ProfessionalAccountedAll = [
     "2013": "181",
     "2014": "179",
     "2015": "186",
-    "UK Standard Industrial Classification (SIC) 2007": "Section K: Financial and insurance activities",
+    "UK Standard Industrial Classification (SIC) 2007": "Financial and insurance activities",
     "field2": "64: Financial service activities, except insurance and pension funding"
   },
   {
@@ -376,7 +376,7 @@ var ProfessionalAccountedAll = [
     "2013": "116",
     "2014": "118",
     "2015": "137",
-    "UK Standard Industrial Classification (SIC) 2007": "Sections L: Real estate",
+    "UK Standard Industrial Classification (SIC) 2007": "Real estate",
     "field2": "L: Real Estate"
   },
   {
@@ -396,7 +396,7 @@ var ProfessionalAccountedAll = [
     "2013": "197",
     "2014": "204",
     "2015": "207",
-    "UK Standard Industrial Classification (SIC) 2007": "Section M: professional, scientific & technical",
+    "UK Standard Industrial Classification (SIC) 2007": "professional, scientific & technical",
     "field2": "69: Legal and accounting activities"
   },
   {
@@ -516,7 +516,7 @@ var ProfessionalAccountedAll = [
     "2013": "19",
     "2014": "17",
     "2015": "18",
-    "UK Standard Industrial Classification (SIC) 2007": "Section N: Administrative and support service activities",
+    "UK Standard Industrial Classification (SIC) 2007": "Administrative and support service activities",
     "field2": "77: Rental and leasing activities"
   },
   {
@@ -636,27 +636,7 @@ var ProfessionalAccountedAll = [
     "2013": "221",
     "2014": "223",
     "2015": "219",
-    "UK Standard Industrial Classification (SIC) 2007": "Section O: Public administration and defence, compulsory social security",
-    "field2": ""
-  },
-  {
-    "2000": "272",
-    "2001": "263",
-    "2002": "279",
-    "2003": "293",
-    "2004": "305",
-    "2005": "302",
-    "2006": "303",
-    "2007": "313",
-    "2008": "319",
-    "2009": "352",
-    "2010": "359",
-    "2011": "361",
-    "2012": "376",
-    "2013": "387",
-    "2014": "411",
-    "2015": "419",
-    "UK Standard Industrial Classification (SIC) 2007": "Section P: Education",
+    "UK Standard Industrial Classification (SIC) 2007": "Public administration and defence, compulsory social security",
     "field2": ""
   },
   {
@@ -676,7 +656,7 @@ var ProfessionalAccountedAll = [
     "2013": "303",
     "2014": "317",
     "2015": "326",
-    "UK Standard Industrial Classification (SIC) 2007": "Section Q: Human health and social work activities",
+    "UK Standard Industrial Classification (SIC) 2007": "Human health and social work activities",
     "field2": "86: Human health activities"
   },
   {
@@ -700,26 +680,6 @@ var ProfessionalAccountedAll = [
     "field2": "87: Residential care activities"
   },
   {
-    "2000": "90",
-    "2001": "91",
-    "2002": "91",
-    "2003": "90",
-    "2004": "92",
-    "2005": "95",
-    "2006": "95",
-    "2007": "96",
-    "2008": "110",
-    "2009": "137",
-    "2010": "138",
-    "2011": "132",
-    "2012": "140",
-    "2013": "165",
-    "2014": "163",
-    "2015": "155",
-    "UK Standard Industrial Classification (SIC) 2007": "",
-    "field2": "88: Social work activities without accommodation"
-  },
-  {
     "2000": "149",
     "2001": "154",
     "2002": "159",
@@ -736,27 +696,7 @@ var ProfessionalAccountedAll = [
     "2013": "169",
     "2014": "194",
     "2015": "200",
-    "UK Standard Industrial Classification (SIC) 2007": "Section R: Arts, entertainment and recreation",
-    "field2": ""
-  },
-  {
-    "2000": "131",
-    "2001": "130",
-    "2002": "129",
-    "2003": "133",
-    "2004": "133",
-    "2005": "137",
-    "2006": "135",
-    "2007": "140",
-    "2008": "135",
-    "2009": "132",
-    "2010": "138",
-    "2011": "139",
-    "2012": "135",
-    "2013": "156",
-    "2014": "150",
-    "2015": "147",
-    "UK Standard Industrial Classification (SIC) 2007": "Section S: Other service activities",
+    "UK Standard Industrial Classification (SIC) 2007": "Arts, entertainment and recreation",
     "field2": ""
   },
   {
