@@ -1,94 +1,108 @@
-﻿<!--
- * @Descripttion: 
- * @Date: 2021-05-06 16:24:38
--->
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <title>Employment&Income</title>
-  <link rel="stylesheet" href="css/common.css">
-  <link rel="stylesheet" href="css/map.css">
-  <link rel="stylesheet" href="css/liMarquee.css">
-  <link rel="stylesheet" href="css/prettify.css">
-</head>
+	<head>
+		<meta charset="UTF-8">
+		<title> </title>
+	</head>
+	<script src="four/js/jquery.min.js"></script>
 
-<style>
-  .liMarquee {
-    margin-top: 10px;
-    width: 100%;
-    height: 20vh;
-    font-size: 14px;
-    background-color: transparent;
-    color: white;
-  }
+	<body>
+		<div id="sinoBody">
+			<iframe src="first/index.html" width="100%" height="100%" id="iframe" frameborder="0"></iframe>
+		</div>
+		<div class="sinoBody" style="position: absolute;z-index:-1;width: 100%;height: 100%;">
 
-  .liMarquee ul {
-    line-height: 1.5em;
-  }
-</style>
+		</div>
+		<div style="position:absolute;left: 10px;top: 55%;z-index: 9999;" id="left"><img src="images/l.png"></div>
+		<div style="position:absolute;right: 10px;top: 55%;z-index: 9999;" id="right"><img src="images/r.png"></div>
+	</body>
+	<script type="text/javascript">
+		$(function() {
+			var init = {
+				resize: function() {
+					$("#sinoBody,.sinoBody").css({
+						position: "absolute",
+						left: 0,
+						top: 0,
+						width: Math.abs($(window).width())
+						// left: Math.abs(($(window).width() - $("#sinoBody,.sinoBody").outerWidth())) ,
+						// top: Math.abs(($(window).height() - $("#sinoBody,.sinoBody").outerHeight())) 
+					});
+					$('#iframe').css({
+						width: Math.abs($(window).width()),
+						height: Math.abs($(window).height())
+					})
+				}
+			}
+			$(window).resize(function() {
+				init.resize();
+			});
+			init.resize();
+			var index = 0;
+			var time = null;
+			var list = [
+				"DataVis_groupwork-master/index.html",
+				"HouseHomeless/syncmapl.html",
+				"groupVIZ-main/index03.html",
+				"four/index.html",
+				"first/index.html",
 
-<body>
-  <div class="loading">
-    <div class="loadbox"> <img src="./images/loading.gif"> Loading... </div>
-  </div>
-  <div class="data">
-    <div class="data-title">
-      <div class="title-center"> Employment & Income</div>
-    </div>
-    <div class="data-content">
-      <div class="con-left fl">
-        <div class="top-bottom boxstyle">
-          <div class="title">Employment by Borough</div>
-          <div id="echarts_1" class="charts"></div>
-        </div>
-        <div class="left-bottom boxstyle">
-          <div class="title">
-            <a href="javascript:void(0)" style="color: green;" onclick="titleClick(this)">Unemployment</a>
-            <span style="color: aquamarine;"> | </span>
-            <a href="javascript:void(0)" style="color: white;" onclick="titleClick(this)">Disposable Income</a>
-          </div>
-          <div id="echarts_2" class="charts"></div>
-          <div id="echarts_x" class="charts" style="display: none;"></div>
-        </div>
-      </div>
-      <div class="con-center fl">
-        <div class="cen-top map boxstyle" id="map"></div>
-      </div>
-      <div class="con-right fr">
-        <div class="right-center boxstyle">
-          <div class="title">NEWS</div>
-          <div class=" boxstyle liMarquee" style="width: 90%;margin: 0 auto;border-width: 0;">
-          </div>
-        </div>
-        <div class="right-top boxstyle">
-          <div class="title">Changing of Employment in London</div>
-          <div id="echarts_4" class="charts"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
+			];
 
-<script src="./assets/jquery-2.1.1.min.js"></script>
-<script src="./assets/jquery.liMarquee.js"></script>
-<script src="./assets/echarts.min.js"></script>
-<script src="./assets/london_boroughs.js"></script>
-<script>
-  $(window).load(function () {
-    $(".loading").fadeOut()
-  });
-</script>
+			$("#left").click(function(event) {
+				event.stopPropagation();
+				if (index > 0) {
+					index--;
+					if (index < 0) {
+						index = list.length;
+					}
+					$("#sinoBody").html('<iframe src="' + list[index] +
+						'"  width="' + Math.abs($(window).width()) + '" height="' + Math.abs($(window).height()) +
+						'" id="iframe" frameborder="no"></iframe>')
+					//				}	
+				} else {
+					index = list.length;
+					index--;
+					//					console.log(index);
+					if (index < 0) {
+						index = list.length;
+					}
+					$("#sinoBody").html('<iframe src="' + list[index] +
+						'"  width="' + Math.abs($(window).width()) + '" height="' + Math.abs($(window).height()) +
+						'" id="iframe" frameborder="no"></iframe>')
+				}
+			});
+			$("#right").click(function(e) {
+				//					if (index > list.length) {
+				var e = window.event;
+				index++;
+				//						console.log(index);
+				if (index > list.length - 1) {
+					index = 0;
+				}
+				e.stopPropagation();
+				//				console.log(list[index])
+				$("#sinoBody").html('<iframe src="' + list[index] +
+					'" width="' + Math.abs($(window).width()) + '" height="' + Math.abs($(window).height()) +
+					'" id="iframe" frameborder="no"></iframe>')
 
-<script src="./data/伦敦各区职业占比.js"></script>
-<script src="./data/伦敦总职业占比.js"></script>
-<script src="./data/可支配收入.js"></script>
-<script src="./data/失业率.js"></script>
-<script src="./data/纳税人收入.js"></script>
-<script src="./data/新闻.js"></script>
+				return false;
+			})
 
-<script src="./js/utils.js"></script>
-<script src="js/echarts.js"></script>
+			$("#sinoBody,.sinoBody").mouseout(function() {
+				time = setInterval(function circle() {
+					index++;
+					if (index > list.length) {
+						index = 0;
+					}
+					$("#sinoBody").html('<iframe src="' + list[index] +
+						'width="' + Math.abs($(window).width()) + '" height="' + Math.abs($(window).height()) +
+						'" id="iframe" frameborder="no"></iframe>')
+				}, 60000);
+			});
+
+		});
+	</script>
 
 </html>
